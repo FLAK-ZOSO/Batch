@@ -13,7 +13,7 @@ set /p folders=How many folders should I create into this directory?
 :directory
 set newDir=%dir%
 for /l %%i in (1, 1, %deep%) do (
-    set newDir=!%%i%newDir%!
+    set newDir=%%i\%newDir%
     echo %newDir%
 )
 set "newDir=C:\\%newDir%"
@@ -29,8 +29,10 @@ if not exist %newDir% (
 echo %newDir%
 
 :: Folders
+:folders
 cd %newDir%
 for /l %%x in (1, 1, %folders%) do (
+    echo %%x
     mkdir %%x
 )
 
